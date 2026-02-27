@@ -12,7 +12,8 @@ function walk(dir, callback) {
 const outDir = path.join(__dirname, '../out');
 
 walk(outDir, (filePath) => {
-  if (filePath.endsWith('.html')) {
+  // Process HTML, JS, CSS, and TXT files which may contain absolute paths
+  if (filePath.endsWith('.html') || filePath.endsWith('.js') || filePath.endsWith('.css') || filePath.endsWith('.txt')) {
     let content = fs.readFileSync(filePath, 'utf8');
     
     // Calculate relative path to root
@@ -21,18 +22,30 @@ walk(outDir, (filePath) => {
       relativePathToRoot = '.';
     }
     
+    // For JS files, we want paths relative to the HTML root, not the JS file itself
+    // Since all our HTML files are at the root (trailingSlash: false), we use './'
+    let prefix = relativePathToRoot;
+    if (filePath.endsWith('.js')) {
+      prefix = '.';
+    }
+    
     // Replace absolute paths with relative paths
-    // This handles /_next/ and /images/ in both HTML tags and script content
-    let nextReplacement = relativePathToRoot + '/_next/';
-    let imagesReplacement = relativePathToRoot + '/images/';
+    // This handles /_next/ and /images/
+    let nextReplacement = (prefix + '/_next/').replace(/\/+/g, '/');
+    let imagesReplacement = (prefix + '/images/').replace(/\/+/g, '/');
     
-    // Ensure we don't end up with .//_next/
-    nextReplacement = nextReplacement.replace(/\/+/g, '/');
-    imagesReplacement = imagesReplacement.replace(/\/+/g, '/');
+    // Ensure relative paths start with ./ if they are in the same directory
+    if (!nextReplacement.startsWith('.') && !nextReplacement.startsWith('/')) {
+      nextReplacement = './' + nextReplacement;
+    }
+    if (!imagesReplacement.startsWith('.') && !imagesReplacement.startsWith('/')) {
+      imagesReplacement = './' + imagesReplacement;
+    }
     
+    // Use a more robust replacement
     let relativeContent = content
-      .replace(/\/_next\//g, nextReplacement)
-      .replace(/\/images\//g, imagesReplacement);
+      .split('/_next/').join(nextReplacement)
+      .split('/images/').join(imagesReplacement);
     
     fs.writeFileSync(filePath, relativeContent);
     console.log(`Fixed paths in ${filePath}`);
