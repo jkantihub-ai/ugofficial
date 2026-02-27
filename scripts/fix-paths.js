@@ -22,15 +22,20 @@ walk(outDir, (filePath) => {
     }
     
     // Replace absolute paths with relative paths
-    // This handles /_next/ in both HTML tags and script content
-    let replacement = relativePathToRoot + '/_next/';
-    // Ensure we don't end up with .//_next/
-    replacement = replacement.replace(/\/+/g, '/');
+    // This handles /_next/ and /images/ in both HTML tags and script content
+    let nextReplacement = relativePathToRoot + '/_next/';
+    let imagesReplacement = relativePathToRoot + '/images/';
     
-    let relativeContent = content.replace(/\/_next\//g, replacement);
+    // Ensure we don't end up with .//_next/
+    nextReplacement = nextReplacement.replace(/\/+/g, '/');
+    imagesReplacement = imagesReplacement.replace(/\/+/g, '/');
+    
+    let relativeContent = content
+      .replace(/\/_next\//g, nextReplacement)
+      .replace(/\/images\//g, imagesReplacement);
     
     fs.writeFileSync(filePath, relativeContent);
-    console.log(`Fixed paths in ${filePath} using prefix ${replacement}`);
+    console.log(`Fixed paths in ${filePath}`);
   }
 });
 

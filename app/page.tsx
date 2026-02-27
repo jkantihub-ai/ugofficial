@@ -22,13 +22,13 @@ const DATA = {
     title: "Serial Entrepreneur",
     subtitle: "Dreamer & Visionary",
     text: "Passionate about Health & Fitness. Mentor for Start-ups. Building brands that make an impact.",
-    image: "https://utpalghoshofficial.com/images/section/hero-img.jpg",
-    bgImage: "https://utpalghoshofficial.com/images/background/hero-bg.jpg"
+    image: "/images/hero-img.jpg",
+    bgImage: "/images/hero-bg.jpg"
   },
   about: {
     title: "Hi There! I'm Utpal Ghosh",
     subtitle: "Dreamer & Entrepreneur",
-    image: "https://utpalghoshofficial.com/images/section/about.jpg",
+    image: "/images/about.jpg",
     details: [
       { label: "Founder", value: "Protein Box" },
       { label: "Co-Founder", value: "Ekaar" },
@@ -85,17 +85,17 @@ const DATA = {
     {
       title: "T-Hub Graduation",
       description: "Receiving Graduation Certificate from T-Hub CEO Srinivas Rao Mahankali (MSR).",
-      image: "https://utpalghoshofficial.com/images/blog/blog1.jpg"
+      image: "/images/blog1.jpg"
     },
     {
       title: "Leap to Unicorn",
       description: "Protein Box shortlisted as top 400 start-ups in India amongst 6000+ applications.",
-      image: "https://utpalghoshofficial.com/images/blog/blog2.jpg"
+      image: "/images/blog2.jpg"
     },
     {
       title: "With Nitin Gadkari",
       description: "With Shri Nitin Gadkari ji in Traffic Rewards Inauguration Ceremony in Goa.",
-      image: "https://utpalghoshofficial.com/images/blog/blog3.jpg"
+      image: "/images/blog3.jpg"
     }
   ],
   social: [
