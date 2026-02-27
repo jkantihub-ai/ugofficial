@@ -455,24 +455,24 @@ export default function PortfolioPage() {
               </div>
             </div>
             <div className="bg-stone-50 p-12 rounded-[2rem] border border-stone-100">
-              <form className="space-y-6">
+              <form className="space-y-6" suppressHydrationWarning>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="font-mono text-[10px] uppercase tracking-widest text-stone-400 ml-1">Name</label>
-                    <input type="text" className="w-full bg-white border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:border-stone-900 transition-colors" placeholder="Your Name" />
+                    <input type="text" className="w-full bg-white border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:border-stone-900 transition-colors" placeholder="Your Name" suppressHydrationWarning />
                   </div>
                   <div className="space-y-2">
                     <label className="font-mono text-[10px] uppercase tracking-widest text-stone-400 ml-1">Email</label>
-                    <input type="email" className="w-full bg-white border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:border-stone-900 transition-colors" placeholder="Your Email" />
+                    <input type="email" className="w-full bg-white border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:border-stone-900 transition-colors" placeholder="Your Email" suppressHydrationWarning />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="font-mono text-[10px] uppercase tracking-widest text-stone-400 ml-1">Subject</label>
-                  <input type="text" className="w-full bg-white border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:border-stone-900 transition-colors" placeholder="Subject" />
+                  <input type="text" className="w-full bg-white border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:border-stone-900 transition-colors" placeholder="Subject" suppressHydrationWarning />
                 </div>
                 <div className="space-y-2">
                   <label className="font-mono text-[10px] uppercase tracking-widest text-stone-400 ml-1">Message</label>
-                  <textarea rows={5} className="w-full bg-white border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:border-stone-900 transition-colors resize-none" placeholder="Your Message" />
+                  <textarea rows={5} className="w-full bg-white border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:border-stone-900 transition-colors resize-none" placeholder="Your Message" suppressHydrationWarning />
                 </div>
                 <button className="w-full py-5 bg-stone-900 text-white rounded-2xl font-serif italic text-xl hover:bg-stone-800 transition-all hover:scale-[1.02]">
                   Send Message
